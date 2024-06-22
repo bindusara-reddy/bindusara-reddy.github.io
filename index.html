@@ -3,108 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>whats in my head </title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-        }
-        nav {
-            background-color: #444;
-            color: #fff;
-            text-align: center;
-            padding: 0.5rem;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-        }
-        nav a:hover {
-            background-color: #555;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
-        }
-        .project {
-            background-color: #fff;
-            border-radius: 5px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        #contact form {
-            display: flex;
-            flex-direction: column;
-        }
-        #contact form input, #contact form textarea {
-            margin-bottom: 1rem;
-            padding: 0.5rem;
-        }
-        #contact form button {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 0.5rem;
-            cursor: pointer;
-        }
-        #contact form button:hover {
-            background-color: #555;
-        }
-    </style>
+    <title>4th Spatial Coordinate</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>My Portfolio</h1>
+        <h1>My digital canvas</h1>
+        <nav>
+            <ul>
+                <li><a href="#blog">Blog Posts</a></li>
+                <li><a href="#videos">YouTube Videos</a></li>
+                <li><a href="#links">Interesting Links</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <div class="container">
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Hello! I'm a web developer passionate about creating beautiful and functional websites.</p>
-        </section>
-        <section id="projects">
-            <h2>My Projects</h2>
-            <div class="project">
-                <h3>Project 1</h3>
-                <p>Description of project 1.</p>
+
+    <main>
+        <section id="blog">
+            <h2>Blog Posts</h2>
+            <div class="blog-post">
+                <h3>Blog Post Title 1</h3>
+                <p>Content of the first blog post...</p>
             </div>
-            <div class="project">
-                <h3>Project 2</h3>
-                <p>Description of project 2.</p>
+            <div class="blog-post">
+                <h3>Blog Post Title 2</h3>
+                <p>Content of the second blog post...</p>
             </div>
+            <!-- Add more blog posts as needed -->
         </section>
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <form id="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
+
+        <section id="videos">
+            <h2>YouTube Videos</h2>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=example1" target="_blank">Interesting Video 1</a></li>
+                <li><a href="https://www.youtube.com/watch?v=example2" target="_blank">Interesting Video 2</a></li>
+                <!-- Add more video links as needed -->
+            </ul>
         </section>
-    </div>
-    <script>
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
-        });
-    </script>
+
+        <section id="links">
+            <h2>Interesting Links</h2>
+            <ul>
+                <li><a href="https://www.example.com" target="_blank">Interesting Site 1</a></li>
+                <li><a href="https://www.anotherexample.com" target="_blank">Interesting Site 2</a></li>
+                <!-- Add more links as needed -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Personal Website</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
