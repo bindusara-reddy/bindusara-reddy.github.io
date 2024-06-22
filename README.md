@@ -1,2 +1,4 @@
 # home
-my personal website
+hey 
+you found my website
+great stuff aint it
