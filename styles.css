@@ -1,52 +1,79 @@
-body {
-    font-family: Arial, sans-serif;
+body, html {
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background-color: #1a1a1a;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 header {
-    background: #333;
-    color: #fff;
-    padding: 1em 0;
-    text-align: center;
+    background-image: url('https://via.placeholder.com/1920x1080');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+h1 {
+    font-size: 4rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 1em;
+nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;
 }
 
-nav ul li a {
+nav a {
     color: #fff;
     text-decoration: none;
+    margin-left: 20px;
+    font-size: 1.2rem;
 }
 
-main {
-    padding: 1em;
+.content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 40px 0;
 }
 
-section {
-    margin-bottom: 2em;
+.item {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-.blog-post {
-    background: #f4f4f4;
-    margin: 1em 0;
-    padding: 1em;
+.item:hover {
+    transform: translateY(-5px);
+}
+
+.item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.item-content {
+    padding: 20px;
 }
 
 footer {
-    background: #333;
-    color: #fff;
     text-align: center;
-    padding: 1em 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    padding: 20px;
+    background-color: #2a2a2a;
+}
+
+footer a {
+    color: #fff;
 }
