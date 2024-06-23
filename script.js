@@ -1,19 +1,19 @@
 // Sample data - replace with your actual content
 const content = {
-    blog: [
-        { title: "My First Blog Post", preview: "This is a preview of my first blog post...", image: "https://via.placeholder.com/300x200", link: "blog/my-first-post.html" },
+    note: [
+        { title: "H-ll-W-r-d", preview: "First note...", image: "https://i.pinimg.com/736x/d4/09/b2/d409b254a9ad71f0225993123fea6840.jpg", link: "Note/helloworld.html" },
         // Add more blog posts...
     ],
-    photos: [
-        { title: "Sunset at the Beach", image: "https://via.placeholder.com/300x200", link: "photos/sunset-beach.html" },
+    clip: [
+        { title: "Sunset at the Beach", image: "https://via.placeholder.com/300x200", link: "Clip/sunset-beach.html" },
         // Add more photo galleries...
     ],
-    videos: [
-        { title: "My Latest Project", preview: "A video showcasing my recent work...", image: "https://via.placeholder.com/300x200", link: "videos/latest-project.html" },
+    memory: [
+        { title: "My Latest Project", preview: "A video showcasing my recent work...", image: "https://via.placeholder.com/300x200", link: "Memory/latest-project.html" },
         // Add more videos...
     ],
-    research: [
-        { title: "Machine Learning in Healthcare", preview: "A study on the applications of ML in medical diagnosis...", image: "https://via.placeholder.com/300x200", link: "research/ml-healthcare.html" },
+    thought: [
+        { title: "Machine Learning in Healthcare", preview: "A study on the applications of ML in medical diagnosis...", image: "https://via.placeholder.com/300x200", link: "Thought/ml-healthcare.html" },
         // Add more research papers...
     ]
 };
