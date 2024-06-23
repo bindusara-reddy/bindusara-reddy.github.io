@@ -1,119 +1,70 @@
 body, html {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     color: #fff;
-    background-color: #000;
+    overflow: hidden;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-header {
-    background-image: url('https://via.placeholder.com/1920x1080');
+    height: 100%;
+    background-image: url('https://source.unsplash.com/random/1920x1080/?nature,water');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    background-repeat: no-repeat;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     position: relative;
 }
 
-header::after {
+.container::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
     background: rgba(0, 0, 0, 0.5);
 }
 
-h1 {
-    font-size: 4rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+main {
+    text-align: center;
     position: relative;
     z-index: 1;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
-nav {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 100;
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
 }
 
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
+.poem {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    font-weight: 300;
 }
 
-nav a:hover {
-    color: #ccc;
+.poem p {
+    margin: 0.5rem 0;
 }
 
-.content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 40px 0;
+.poem p:nth-child(2) {
+    font-style: italic;
 }
 
-.item {
-    background-color: #111;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(255,255,255,0.1);
-}
-
-.item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.item-content {
-    padding: 20px;
-}
-
-.item-content h3 {
-    margin-top: 0;
-    color: #fff;
-}
-
-.item-content p {
-    color: #ccc;
-}
-
-.item-content a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.item-content a:hover {
-    color: #ccc;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #111;
-}
-
-footer a {
-    color: #fff;
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .poem {
+        font-size: 1.2rem;
+    }
 }
