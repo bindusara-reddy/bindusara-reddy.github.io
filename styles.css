@@ -3,7 +3,7 @@ body, html {
     padding: 0;
     font-family: 'Arial', sans-serif;
     color: #fff;
-    background-color: #1a1a1a;
+    background-color: #000;
 }
 
 .container {
@@ -20,17 +20,31 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 h1 {
     font-size: 4rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 1;
 }
 
 nav {
     position: fixed;
     top: 20px;
     right: 20px;
+    z-index: 100;
 }
 
 nav a {
@@ -38,6 +52,11 @@ nav a {
     text-decoration: none;
     margin-left: 20px;
     font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ccc;
 }
 
 .content {
@@ -48,14 +67,15 @@ nav a {
 }
 
 .item {
-    background-color: #2a2a2a;
+    background-color: #111;
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255,255,255,0.1);
 }
 
 .item img {
@@ -68,10 +88,30 @@ nav a {
     padding: 20px;
 }
 
+.item-content h3 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.item-content p {
+    color: #ccc;
+}
+
+.item-content a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.item-content a:hover {
+    color: #ccc;
+}
+
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #2a2a2a;
+    background-color: #111;
 }
 
 footer a {
