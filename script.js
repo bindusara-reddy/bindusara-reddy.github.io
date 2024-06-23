@@ -1,7 +1,7 @@
 // Sample data - replace with your actual content
 const content = {
     note: [
-        { title: "H-ll-W-r-d", preview: "First note...", image: "https://i.pinimg.com/736x/d4/09/b2/d409b254a9ad71f0225993123fea6840.jpg", link: "Note/helloworld.html" },
+        { title: "H-ll-W-r-d", preview: "Do you wanna see a videogame?", image: "https://i.pinimg.com/736x/d4/09/b2/d409b254a9ad71f0225993123fea6840.jpg", link: "Note/helloworld.html" },
         // Add more blog posts...
     ],
     clip: [
@@ -26,7 +26,7 @@ function createItem(item) {
             <div class="item-content">
                 <h3>${item.title}</h3>
                 <p>${item.preview || ''}</p>
-                <a href="${item.link}">Read More</a>
+                <a href="${item.link}">Don't Click</a>
             </div>
         </div>
     `;
