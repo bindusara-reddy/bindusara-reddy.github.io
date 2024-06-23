@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1556103727-777acb371272');
+            background-size: cover;
+            background-attachment: fixed;
+            color: rgb(161, 255, 235);
+            margin: 10px 100px;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(87, 234, 245);
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            color: rgb(87, 234, 245);
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .code-section {
+            margin-bottom: 30px;
+        }
+
+        pre {
+            background-color: rgba(87, 235, 245, 0.315);
+            padding: 15px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 0;
+        }
+
+        code {
+            font-family: 'Roboto Mono', monospace;
+            color: #ffffff;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            pre {
+                padding: 10px;
+            }
+
+            code {
+                font-size: 0.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.1em;
+            }
+
+            p {
+                font-size: 0.9em;
+            }
+
+            code {
+                font-size: 0.7em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Neural Network</h1>
+        <p>Simple neural network for digit recognition.</p>
+        <div class="code-section">
+            <h2>Import Libraries</h2>
+            <pre><code>import torch
+import torch.nn as nn
+import torch.optim as optim
+from torchvision import datasets, transforms</code></pre>
+        </div>
+        <div class="code-section">
+            <h2>Set Device</h2>
+            <pre><code>device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')</code></pre>
+        </div>
+        <div class="code-section">
+            <h2>Load Data</h2>
+            <pre><code>train_data = datasets.MNIST(root='data', train=True, transform=transforms.ToTensor(), download=True)
+test_data = datasets.MNIST(root='data', train=False, transform=transforms.ToTensor())</code></pre>
+        </div>
+        <div class="code-section">
+            <h2>Define Neural Network</h2>
+            <pre><code>class FNN(nn.Module):
+    def __init__(self):
+        super(FNN, self).__init__()
+        self.flatten = nn.Flatten()
+        self.fc1 = nn.Linear(28 * 28, 128)
+        self.relu = nn.ReLU()
+        self.fc2 = nn.Linear(128, 10)
+
+    def forward(self, x):
+        x = self.flatten(x)
+        x = self.fc1(x)
+        x = self.relu(x)
+        x = self.fc2(x)
+        return x</code></pre>
+        </div>
+        <div class="code-section">
+            <h2>Train Model</h2>
+            <pre><code>model = FNN().to(device)
+
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+num_epochs = 5
+for epoch in range(num_epochs):
+    model.train()
+    for batch_idx, (data, targets) in enumerate(train_data):
+        data, targets = data.to(device), targets.to(device)
+        optimizer.zero_grad()
+        outputs = model(data)
+        loss = criterion(outputs, targets)
+        loss.backward()
+        optimizer.step()
+        if batch_idx % 100 == 0:
+            print(f"Epoch [{epoch+1}/{num_epochs}], Batch [{batch_idx+1}/{len(train_data)}], Loss: {loss.item():.4f}")</code></pre>
+        </div>
+        <div class="code-section">
+            <h2>Evaluate Model</h2>
+            <pre><code>model.eval()
+correct = 0
+total = 0
+with torch.no_grad():
+    for data, targets in test_data:
+        data, targets = data.to(device), targets.to(device)
+        outputs = model(data)
+        _, predicted = torch.max(outputs.data, 1)
+        total += targets.size(0)
+        correct += (predicted == targets).sum().item()
+
+print(f"Accuracy on test data: {100 * correct / total:.2f}%")</code></pre>
+        </div>
+    </div>
+</body>
+</html>

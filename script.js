@@ -2,19 +2,19 @@
 const content = {
     note: [
         { title: "H-ll-W-r-d", preview: "Do you wanna see a videogame?", image: "https://i.pinimg.com/736x/d4/09/b2/d409b254a9ad71f0225993123fea6840.jpg", link: "Note/helloworld.html" },
-        // Add more blog posts...
+        // Add more notes...
     ],
     clip: [
-        { title: "Sunset at the Beach", image: "https://via.placeholder.com/300x200", link: "Clip/sunset-beach.html" },
-        // Add more photo galleries...
+        { title: "catto", image: "https://i.pinimg.com/564x/c4/93/20/c49320b072068b5da9b176d1a77adce7.jpg", link: "Clip/gallery.html" },
+        // Add more clips...
     ],
     memory: [
-        { title: "My Latest Project", preview: "A video showcasing my recent work...", image: "https://via.placeholder.com/300x200", link: "Memory/latest-project.html" },
-        // Add more videos...
+        { title: "SoundWaves", preview: "Vibes..", image: "https://i.pinimg.com/564x/11/92/33/1192331815ef0cc6e9934d5c87aba5f3.jpg", link: "Memory/playlist.html" },
+        // Add more memories...
     ],
     thought: [
-        { title: "Machine Learning in Healthcare", preview: "A study on the applications of ML in medical diagnosis...", image: "https://via.placeholder.com/300x200", link: "Thought/ml-healthcare.html" },
-        // Add more research papers...
+        { title: "neuralnet", preview: "How a computer reads numbers:", image: "https://i.pinimg.com/564x/01/18/d1/0118d1ecf9211898da08a8225079c33b.jpg", link: "Thought/intelligence.html" },
+        // Add more thoughts...
     ]
 };
 

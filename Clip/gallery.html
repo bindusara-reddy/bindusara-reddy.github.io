@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        body {
+            font-family: 'Roboto', serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://images.unsplash.com/photo-1554147090-e1221a04a025') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #00fcfc;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 20px 0;
+            background: rgba(250, 52, 52, 0.74);
+            padding: 10px 200px;
+            border-radius: 10px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            width: 90%;
+            max-width: 1200px;
+            margin-bottom: 40px;
+            background: rgba(100, 255, 242, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgb(0, 0, 0);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(255, 251, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <h1>Gallery</h1>
+
+    <div class="gallery">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMGgxQzNn3CZN1NqmqIf54TiZ0mFbHfbXQjIWPB3Np4TCNcjgROXO0CQvVe12ME2AlwMd3Qn8K56ckrSHgJhoMYvGvCXn9yRO135ntZNmbeVaCwVpcO1Y-BrgvLE1x0AAyHWfud9kSvPMhHMbLAZezrvBqUEeI-jdRDpmtcxrlQL5uFQ0RkFuBIMH5Ym6DldxOO_bS-1AUU2VjGnWmozjkNkq1yXhMmI0qPZrmBmbyyTDU15-jlC1TXkaMKnq13bVaXJOYkk-oxjtRwD8tIRFAzDVd1eeK0viAR_QphWufQLWt47b0LrglWN65FWWL7AsSQtJwTLMhMBJYaQ0Ocv7LJQ5Xew1df3YHuMvNRAnHrFrxUtfRaugFxTdekdNE3M3aaW0DYjAd8VurlhyxkbZSuiM1EdrWZw1qzurS2bToJrFV17w9lNPfpa3HudaK9kHdQ0knwaBVWHZdrYmn1DxoBY0sBibHeb0gELpsfHh0qtFwukFcrsWqa-hw_CtgRffaggDqp-LX3JZfqTxGY7rqhD7IXCtL7iDmO4rS0p4wA8CqcUXUknrkuMexxW4bKk3WorZJ6_3RM5tymK1yk2wc4k1nVYOallFOkcQsVyO9LDt0T1tGrOugwBU7Bg5akljYkC4LQEdVqZ-d0VHMDp4XQlRr5tPBmwn6r4piB530mqmcU4TNSDCZsvGo0VSeDXGxXcTHoPwaxDIM9QEsFVH7XODF0-eDg0KpLg07MBa06h36W3DuX4ZJS3raIt84uKnOD4nkL6QavwY6oqkr5BSM5AUcIM3FXsUi06-wmXcpGZJMUWTkhhJc-OWyt_jlZWcP4xZsa35C-g6qPT96kOoE_O0NqXtGgS4FbHyTFyA6AiyaB6d-gUedH4fbNMauXfx3Sbiif320ZLwDvdaPwvfmCCiOX3wkxTBy_C8VdcUSFXH8Pu852RWfjfgDESy2puWHZCVKJ982scr5_MIDHBtjMD5Yvm_A=w719-h958-s-no" alt="Image 1">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczP-jRr4svDRfy4LeAuarYB1aWgtRKpqpTMjXS3-sHMGeX7opZ6lLXnOfyN3MT9pylCncVMOHFbKy1va71zL2bbMmkqJZmPKNeQCwlkRYocVnkIsxdM3trpai09HZW9OCQo6N77Incg9SfxkG2f21nl-yxpMN8waCjNmRqGqsKwwkGmilReaV_VKybxx1tCMd7phMvwDcy_87FrdVXa5lf3r5Ce4BZRlcbn3nase2NB54qeWneae1ZZnChO8p9CTvqiF_3ftJZTKDGpA_bsCNvjQI_cHmMYtdKkERbX71RGdR6fw56SyxWs0zmW92bDpqwql5pERJ_bZ7Bjyg6U4_rHDl8I7n6or28v-0C8QwEuSVUQg6-G9vQS6widbBirYgTTxc9hNCB7zrHntoTcTmCHTtrK_Zp2n8hQwSV9IdiqMXDPRNHpnYqKfoj8fKkOVJbdghRW3z1HbqIYzMApiDA840NhqLTl2k5J7M-T7JmkBHgY7jCtnrebXOW3VM-7dCZPEF8JypBjR1nid9j2d-Sbkx2TrxBAi0KMHxKYKGUHpRsR5i_Rkt5DZeJANCQK8pmGk1X6Nkp7bwS4C19-e5-Dt3988ZnlrfRoh4jVja9O7k5w8BJaA6SlkrvIdJFfxdZ7msLvZEoomxBB1K8Svdudmahc4uCuQ8xVdYWSu7u-_XTh-y0dR6QvdYfDNyn2hAKKH-73rMLI906my8k7HxC5bo6ZKJs3MGQaQCCiCw7cwHCzyGOX44os83XFZZub3SdecaDhaV6kqAAflJAwjitBM6nCGWIEqQ0yvpEwlZBsO28HetTEfxHZIiXUk9WKqclWHv5ogT3lk28itKiFhztNevanj6NY7HI-nZuf2WFkSG9-MHdv00k5g7yiR1Gt6CO7p5x1zLJfncpI8g3XPezbjWSDjNwFvnb0-Djps6yhp8I9EC8fQA898C1xX4HrQChMT2WBuiFMzg5qyj3bVWWSFDYxzDI8=w1277-h958-s-no" alt="Image 2">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNBtPWTqcJzlmFSwus3LkQNmsRn4dVXJ9wAmnYyOamYVmxZInGBkQWO52h05mr3wvLcvsN4hJG_kjNwKbhH98cwgJf9V6umHnEkjgGT2796-OtsqOqo6rVACYXmILSWmdbClWI2L0hs3r8PbsClnt0o1GJ_vtbulHxGYFovXDJkhMVLydIVYM3z3_f9eC2TLqP4yvfu7LaovhHMugCjnZTE3FAoGjrOFGTEPyZalSMSVXKuGI8i7YSZz-PwVqEcGFnQes_Z9EGfV0-fwCp3KRGppP0MFlsCqJuJkbbI6aNZgW2p23DBDXN-kNQIeHbmISK5W8gU5_VwOZJaE2BfsPqGYkxFQhx3bRjY7HL-9cJRxFrbThTNBmy522iCC7HkKrBgGNWNc8t-y9MGNv9wqjnPmzwkP6rWI6PtBskOPJlCi924BQDE3QacchRt-FwRs5otkWpMq37BwT_uPTSsdttMg4ks8xF9avoa1knuWzAzzrCF9epIumwxH6l-rhCjHFa-UOxpHSrfKV6sI8YGJc0EeGY6mLO7Ur_x79xwvIoBeA1iuN7eMvvvu0pJmCAYz15WH3ivJj1JA_0mdMBkB3L2gohpQT6KGG7rMnFo7FKdSJPQ27jZdRm2_zo9TpWARq5YssMoYx5JeZxKROmsm6LKSp_zzy3iDRu7HVPJfmd6oEMrUX_7tfi_hZgy24bjhTR7LrEBl-BW1bYK57jSheKobMYtnBaoTIr8s5B0E3W5aZXTjSNfenuGaBN5r7n2qZQg-V3O7LsJpMIWagMrOOUwG7cQIooj2z4ic81azdsCbRUUWRpxbX5zw9U0oLD6gGqMc1P6FY6k75jFa9bkDneKWh1pwN8NcaPpfnNZ1aywhCWnm1RbZNHoJkVnnWbGXXpwIKOyZm2S41mmFLpOjowHXFSHaWC14mhT8VuBY9GaZKUhV_P_tG668jODKogHHW9Vxlg4CdFxzkTT5imsXnB_vjGZ14Y=w539-h958-s-no" alt="Image 3">
+        <!-- Add more images here -->
+    </div>
+</body>
+</html>
