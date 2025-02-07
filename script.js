@@ -1,7 +1,7 @@
 // Sample data - replace with your actual content
 const content = {
     note: [
-        { title: "H-ll-W-r-d", preview: "Do you wanna see a videogame?", image: "https://i.pinimg.com/736x/d4/09/b2/d409b254a9ad71f0225993123fea6840.jpg", link: "Note/helloworld.html" },
+        { title: "H-ll-W-rld", preview: "Do you like videogames?", image: "https://i.pinimg.com/736x/d4/09/b2/d409b254a9ad71f0225993123fea6840.jpg", link: "Note/helloworld.html" },
         // Add more notes...
     ],
     clip: [
