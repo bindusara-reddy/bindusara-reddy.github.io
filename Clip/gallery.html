@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery</title>
+    <link rel="icon" href="../sun.ico" type="image/x-icon">
     <style>
         body {
             font-family: 'Roboto', serif;
             margin: 0;
             padding: 0;
-            background: url('https://images.unsplash.com/photo-1739609579483-00b49437cc45') no-repeat center center fixed;
+            background: url('https://images.unsplash.com/photo-1739609579483-00b49437cc45?q=80&w=1920&auto=format') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             flex-direction: column;
@@ -17,11 +18,29 @@
             color: #00fcfc;
         }
 
+        .home {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 5;
+            color: #00fcfc;
+            text-decoration: none;
+            font-size: 1.1rem;
+            background: rgba(0, 0, 0, 0.55);
+            padding: 8px 16px;
+            border-radius: 999px;
+            transition: background 0.3s ease;
+        }
+
+        .home:hover {
+            background: rgba(0, 0, 0, 0.85);
+        }
+
         h1 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 6vw, 3rem);
             margin: 20px 0;
             background: rgba(250, 52, 52, 0.74);
-            padding: 10px 200px;
+            padding: 10px clamp(30px, 16vw, 200px);
             border-radius: 10px;
         }
 
@@ -43,23 +62,74 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgb(0, 0, 0);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            cursor: pointer;
+            cursor: zoom-in;
         }
 
         .gallery img:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 8px rgba(255, 251, 0, 0.4);
         }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.93);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 94vw;
+            max-height: 94vh;
+            border-radius: 10px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .gallery img {
+                transition: none;
+            }
+        }
     </style>
 </head>
 <body>
+    <a class="home" href="../index.html">&larr; home</a>
+
     <h1>Gallery</h1>
 
     <div class="gallery">
-        <img src="catto/1.png" alt="catto 1">
-        <img src="catto/2.jpg" alt="catto 2">
-        <img src="catto/3.jpg" alt="catto 3">
+        <img src="catto/1.jpg" alt="catto 1" loading="lazy">
+        <img src="catto/2.jpg" alt="catto 2" loading="lazy">
+        <img src="catto/3.jpg" alt="catto 3" loading="lazy">
         <!-- Add more images here -->
     </div>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged photo">
+        <img src="" alt="">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+
+        document.querySelectorAll('.gallery img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('open');
+            });
+        });
+
+        lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') lightbox.classList.remove('open');
+        });
+    </script>
 </body>
 </html>

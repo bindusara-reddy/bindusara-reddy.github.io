@@ -5,18 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neural Network</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="icon" href="../sun.ico" type="image/x-icon">
     <style>
         body {
-            background-image: url('https://images.unsplash.com/photo-1556103727-777acb371272');
+            background-image: url('https://images.unsplash.com/photo-1556103727-777acb371272?q=80&w=1920&auto=format');
             background-size: cover;
             background-attachment: fixed;
             color: rgb(161, 255, 235);
-            margin: 10px 100px;
-            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 10px;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .home {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 5;
+            color: rgb(87, 234, 245);
+            text-decoration: none;
+            font-size: 1.05rem;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 16px;
+            border-radius: 999px;
+            transition: background 0.3s ease;
+        }
+
+        .home:hover {
+            background: rgba(0, 0, 0, 0.9);
         }
 
         .container {
@@ -26,7 +46,7 @@
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 20px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            margin: 20px;
+            margin: 60px 20px 20px;
         }
 
         h1 {
@@ -69,7 +89,7 @@
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
-                margin: 10px;
+                margin: 60px 10px 10px;
             }
 
             h1 {
@@ -109,6 +129,8 @@
     </style>
 </head>
 <body>
+    <a class="home" href="../index.html">&larr; home</a>
+
     <div class="container">
         <h1>Neural Network</h1>
         <p>Simple neural network for digit recognition.</p>

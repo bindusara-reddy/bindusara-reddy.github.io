@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Playlists</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../sun.ico" type="image/x-icon">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -15,11 +16,30 @@
             flex-direction: column;
             align-items: center;
             color: #174b37;
+            min-height: 100vh;
+        }
+
+        .home {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            color: #174b37;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 8px 16px;
+            border-radius: 999px;
+            transition: background 0.3s ease;
+        }
+
+        .home:hover {
+            background: rgba(255, 255, 255, 0.95);
         }
 
         h1 {
             font-size: 2.5rem;
-            margin: 20px 0;
+            margin: 70px 0 20px;
         }
 
         .playlist {
@@ -30,8 +50,8 @@
 
         .playlist h2 {
             font-size: 2rem;
-            color: #555;
-            border-bottom: 2px solid #ddd;
+            color: #1d6047;
+            border-bottom: 2px solid #6fc24d;
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
@@ -44,32 +64,43 @@
         .playlist li {
             background: #fff;
             margin: 10px 0;
-            padding: 15px;
+            padding: 0;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.63);
-            transition: background 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+            transition: background 0.3s ease, transform 0.2s ease;
         }
 
         .playlist li:hover {
             background: #f1f1f1;
+            transform: translateX(4px);
         }
 
         .playlist a {
+            display: block;
+            padding: 15px;
             text-decoration: none;
             color: #ff4800;
             font-weight: bold;
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .playlist li {
+                transition: none;
+            }
+        }
     </style>
 </head>
 <body>
+    <a class="home" href="../index.html">&larr; home</a>
+
     <h1>Music</h1>
 
     <div class="playlist">
         <h2>YouTube Videos</h2>
         <ul>
-            <li><a href="https://www.youtube.com/watch?v=hQ5x8pHoIPA" target="_blank">Feather</a></li>
-            <li><a href="https://www.youtube.com/watch?v=L53gjP-TtGE" target="_blank">Power</a></li>
-            <li><a href="https://www.youtube.com/watch?v=J3DWAJGaf7o" target="_blank">Lost</a></li>
+            <li><a href="https://www.youtube.com/watch?v=hQ5x8pHoIPA" target="_blank" rel="noopener">Feather</a></li>
+            <li><a href="https://www.youtube.com/watch?v=L53gjP-TtGE" target="_blank" rel="noopener">Power</a></li>
+            <li><a href="https://www.youtube.com/watch?v=J3DWAJGaf7o" target="_blank" rel="noopener">Lost</a></li>
             <!-- Add more YouTube video links here -->
         </ul>
     </div>
@@ -77,9 +108,9 @@
     <div class="playlist">
         <h2>Spotify Songs</h2>
         <ul>
-            <li><a href="https://open.spotify.com/track/3GVkPk8mqxz0itaAriG1L7" target="_blank">Everybody dies in their nightmares</a></li>
-            <li><a href="https://open.spotify.com/track/315aBOUD3xtj7sUMXtRgMV" target="_blank">In the Stars</a></li>
-            <li><a href="https://open.spotify.com/track/4nVBt6MZDDP6tRVdQTgxJg" target="_blank">Story of my life</a></li>
+            <li><a href="https://open.spotify.com/track/3GVkPk8mqxz0itaAriG1L7" target="_blank" rel="noopener">Everybody dies in their nightmares</a></li>
+            <li><a href="https://open.spotify.com/track/315aBOUD3xtj7sUMXtRgMV" target="_blank" rel="noopener">In the Stars</a></li>
+            <li><a href="https://open.spotify.com/track/4nVBt6MZDDP6tRVdQTgxJg" target="_blank" rel="noopener">Story of my life</a></li>
             <!-- Add more Spotify song links here -->
         </ul>
     </div>

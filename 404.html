@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lost in space</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Sedan&display=swap" rel="stylesheet">
+    <link rel="icon" href="sun.ico" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            font-family: "Sedan", serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: "Amatic SC", sans-serif;
+            font-size: 6rem;
+            margin: 0;
+        }
+
+        p {
+            color: #aaa;
+            font-size: 1.2rem;
+            margin: 8px 0 28px;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 999px;
+            padding: 10px 24px;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+
+        a:hover {
+            border-color: #fff;
+        }
+
+        .drift {
+            font-size: 2rem;
+            animation: drift 6s ease-in-out infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0) rotate(-8deg); }
+            50% { transform: translate(10px, -14px) rotate(8deg); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .drift { animation: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="drift">🚀</div>
+    <h1>404</h1>
+    <p>you drifted off the map</p>
+    <a href="/">back to earth</a>
+</body>
+</html>

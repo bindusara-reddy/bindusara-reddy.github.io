@@ -5,12 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HelloWorld?</title>
     <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../sun.ico" type="image/x-icon">
     <style>
         .post-content {
-            max-width: 100vh;
+            max-width: 680px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 90px 20px 40px;
             text-align: center;
+            min-height: calc(100vh - 180px);
+        }
+
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .post-content h1 {
+            animation: none;
+            font-family: "Amatic SC", sans-serif;
+            font-size: 3rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .post-date {
+            color: #888;
+            margin-top: 0;
         }
     </style>
 </head>
@@ -25,15 +45,15 @@
 
     <div class="post-content">
         <h1>Hello World</h1>
-        <p>23 June 2024</p>
-        <img src="https://i.pinimg.com/564x/2a/9c/80/2a9c8079b3e75e2d60df0bdd7d4793cd.jpg" alt="Elden Ring">
+        <p class="post-date">23 June 2024</p>
+        <img src="https://i.pinimg.com/564x/2a/9c/80/2a9c8079b3e75e2d60df0bdd7d4793cd.jpg" alt="Elden Ring" loading="lazy">
         <p>Dark Souls:</p>
         <p>A journey against the entropic decay of the universe</p>
         <!-- More paragraphs, images, etc. -->
     </div>
 
     <footer>
-        <p>&copy; Journey to the stars🚀🌟❤️</a></p>
+        <p>&copy; Journey to the stars🚀🌟❤️</p>
     </footer>
 </body>
 </html>

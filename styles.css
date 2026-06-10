@@ -1,3 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -7,7 +15,25 @@ body, html {
     color: #fff;
     background-color: #000;
 }
-  
+
+::selection {
+    background: #fff;
+    color: #000;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #000;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #2a2a2a;
+    border-radius: 5px;
+}
+
 .container {
     max-width: 700px;
     margin: 0 auto;
@@ -15,7 +41,7 @@ body, html {
 }
 
 header {
-    background-image: url('https://images.unsplash.com/34/BA1yLjNnQCI1yisIZGEi_2013-07-16_1922_IMG_9873.jpg');
+    background-image: url('https://images.unsplash.com/34/BA1yLjNnQCI1yisIZGEi_2013-07-16_1922_IMG_9873.jpg?q=80&w=1920&auto=format');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -43,19 +69,64 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     position: relative;
     z-index: 1;
+    animation: rise 1.4s ease both;
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    color: #fff;
+    font-size: 1.6rem;
+    text-decoration: none;
+    opacity: 0.65;
+    animation: bob 2.2s ease-in-out infinite;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-hint:hover {
+    opacity: 1;
+}
+
+@keyframes bob {
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+    50% {
+        transform: translate(-50%, 8px);
+    }
 }
 
 @media screen and (max-width: 600px) {
     h1 {
-        font-size: 2rem; 
+        font-size: 2rem;
     }
 }
 
 nav {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 16px;
+    right: 16px;
     z-index: 100;
+    padding: 10px 18px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 nav a {
@@ -69,9 +140,17 @@ nav a {
     transition: color 0.3s ease;
 }
 
+nav a:first-child {
+    margin-left: 0;
+}
+
 @media screen and (max-width: 600px) {
+    nav {
+        padding: 8px 14px;
+    }
     nav a {
-        font-size: 0.8rem; /* Adjust as needed */
+        font-size: 0.8rem;
+        margin-left: 12px;
     }
 }
 
@@ -79,11 +158,31 @@ nav a:hover {
     color: #818181;
 }
 
+a:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
 .content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     padding: 40px 0;
+    scroll-margin-top: 80px;
+}
+
+.section-label {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.35em;
+    text-transform: lowercase;
+    color: #5d5d5d;
+    border-bottom: 1px solid #1b1b1b;
+    padding-bottom: 10px;
 }
 
 .item {
@@ -102,6 +201,12 @@ nav a:hover {
     width: 100%;
     height: 400px;
     object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.item:hover img {
+    transform: scale(1.03);
 }
 
 .item-content {
@@ -128,6 +233,17 @@ nav a:hover {
     color: #ccc;
 }
 
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
 footer {
     text-align: center;
     padding: 20px;
@@ -136,4 +252,29 @@ footer {
 
 footer a {
     color: #fff;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 2% 6%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    h1,
+    .scroll-hint {
+        animation: none;
+    }
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .item,
+    .item img {
+        transition: none;
+    }
 }

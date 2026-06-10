@@ -22,7 +22,7 @@ const content = {
 function createItem(item) {
     return `
         <div class="item">
-            <img src="${item.image}" alt="${item.title}">
+            <img src="${item.image}" alt="${item.title}" loading="lazy">
             <div class="item-content">
                 <h3>${item.title}</h3>
                 <p>${item.preview || ''}</p>
@@ -32,10 +32,27 @@ function createItem(item) {
     `;
 }
 
-// Populate content
+// Populate content: a faint section label, then the cards
 Object.keys(content).forEach(section => {
     const sectionEl = document.getElementById(section);
-    content[section].forEach(item => {
-        sectionEl.innerHTML += createItem(item);
-    });
+    const label = `<h2 class="section-label">${section}</h2>`;
+    sectionEl.innerHTML = label + content[section].map(createItem).join('');
 });
+
+// Gentle fade-up as cards scroll into view (skipped for reduced motion)
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!prefersReduced && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.item').forEach(el => {
+        el.classList.add('reveal');
+        observer.observe(el);
+    });
+}
