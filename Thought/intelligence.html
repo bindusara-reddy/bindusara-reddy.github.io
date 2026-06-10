@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>how a machine learns to read</title>
-    <meta name="description" content="A real neural network living in this page. Draw a digit, watch the signal flow through 64 neurons, and teach it when it's wrong.">
+    <meta name="description" content="A real neural network compiled from Rust to WebAssembly, living in this page. Draw a digit, watch the signal flow, and teach it when it's wrong.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../sun.ico" type="image/x-icon">
-    <style>
+<style>
         :root {
             --bg: #07070b;
             --ink: #eceae4;
@@ -386,202 +386,10 @@
             .scroll-cue::after { animation: none; }
             canvas.feature, button, #teach-row { transition: none; }
         }
+            #numbers { width: 100%; height: auto; display: block; border-radius: 12px; }
     </style>
 </head>
-<body>
-    <div id="progress"></div>
-    <a class="home" href="../index.html">&larr; home</a>
-
-    <main>
-        <section class="hero">
-            <canvas id="hero-net" aria-hidden="true"></canvas>
-            <div class="hero-inner">
-                <p class="kicker">a living explainer</p>
-                <h1>how a machine<br><em>learns to read</em></h1>
-                <p class="lede">There is a real neural network woven into this page — 50,890 numbers
-                    that taught themselves to read handwriting. Scroll down to take it apart,
-                    then retrain it with your own hands.</p>
-                <div class="chips">
-                    <span class="chip">784 → 64 → 10 neurons</span>
-                    <span class="chip">96.9% accurate</span>
-                    <span class="chip">learns from you</span>
-                </div>
-            </div>
-            <div class="scroll-cue" aria-hidden="true"></div>
-        </section>
-
-        <section class="chapter reveal">
-            <span class="chapnum">chapter 01</span>
-            <h2>a neuron is a tiny opinion</h2>
-            <p>Strip away the mystique and a neuron is a few multiplications. Each input gets a
-                <strong>weight</strong> — how much this neuron cares about it. Add a <strong>bias</strong> —
-                its general mood — and squash the total between 0 and 1. That's the whole organism.</p>
-            <p>Drag the sliders. Watch the wires thicken as weights grow, flip color when they go negative,
-                and watch the output cell brighten as the opinion strengthens. <em>Learning, when it comes,
-                will simply be the art of turning these knobs automatically.</em></p>
-            <div class="card">
-                <div class="neuron-grid">
-                    <div>
-                        <div class="srow"><label for="nx1">input x₁</label><input type="range" id="nx1" min="0" max="1" step="0.05" value="0.8"><output id="nx1-v">0.80</output></div>
-                        <div class="srow"><label for="nw1">weight w₁</label><input type="range" id="nw1" min="-2" max="2" step="0.05" value="1.2"><output id="nw1-v">1.20</output></div>
-                        <div class="srow"><label for="nx2">input x₂</label><input type="range" id="nx2" min="0" max="1" step="0.05" value="0.3"><output id="nx2-v">0.30</output></div>
-                        <div class="srow"><label for="nw2">weight w₂</label><input type="range" id="nw2" min="-2" max="2" step="0.05" value="-0.6"><output id="nw2-v">-0.60</output></div>
-                        <div class="srow"><label for="nb">bias b</label><input type="range" id="nb" min="-2" max="2" step="0.05" value="0.1"><output id="nb-v">0.10</output></div>
-                    </div>
-                    <div>
-                        <svg id="neuron-svg" viewBox="0 0 380 220" role="img" aria-label="diagram of one neuron: two inputs with weighted connections feeding an output">
-                            <line id="nl1" x1="58" y1="62" x2="172" y2="110" stroke="#8b7cff" stroke-width="3" stroke-linecap="round"/>
-                            <line id="nl2" x1="58" y1="158" x2="172" y2="110" stroke="#ff6f9c" stroke-width="2" stroke-linecap="round"/>
-                            <line id="nlo" x1="228" y1="110" x2="318" y2="110" stroke="#ffc466" stroke-width="2" stroke-linecap="round"/>
-                            <circle cx="44" cy="62" r="17" fill="#15151f" stroke="rgba(255,255,255,0.25)"/>
-                            <circle cx="44" cy="158" r="17" fill="#15151f" stroke="rgba(255,255,255,0.25)"/>
-                            <circle id="ncell" cx="200" cy="110" r="29" fill="rgba(139,124,255,0.25)" stroke="#8b7cff" stroke-width="1.5"/>
-                            <circle id="nout" cx="334" cy="110" r="15" fill="rgba(255,196,102,0.3)" stroke="#ffc466" stroke-width="1.5"/>
-                            <text id="nx1-t" x="44" y="66" text-anchor="middle" font-size="11" fill="#eceae4" font-family="JetBrains Mono, monospace">0.8</text>
-                            <text id="nx2-t" x="44" y="162" text-anchor="middle" font-size="11" fill="#eceae4" font-family="JetBrains Mono, monospace">0.3</text>
-                            <text id="nz-t" x="200" y="114" text-anchor="middle" font-size="12" fill="#eceae4" font-family="JetBrains Mono, monospace">Σ</text>
-                            <text id="na-t" x="334" y="114" text-anchor="middle" font-size="10" fill="#eceae4" font-family="JetBrains Mono, monospace">0.7</text>
-                            <text x="44" y="36" text-anchor="middle" font-size="9" fill="#8e8c99" font-family="JetBrains Mono, monospace">inputs</text>
-                            <text x="200" y="64" text-anchor="middle" font-size="9" fill="#8e8c99" font-family="JetBrains Mono, monospace">weighted sum + bias</text>
-                            <text x="334" y="84" text-anchor="middle" font-size="9" fill="#8e8c99" font-family="JetBrains Mono, monospace">fires</text>
-                        </svg>
-                        <div id="neuron-formula">…</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="chapter reveal">
-            <span class="chapnum">chapter 02</span>
-            <h2>sixty-four pattern hunters</h2>
-            <p>Your drawing arrives as a 28×28 grid of brightness — <span class="mono">784</span> numbers.
-                They feed <span class="mono">64</span> hidden neurons, which feed <span class="mono">10</span>
-                outputs, one per digit. Loudest output wins.</p>
-            <p>Here's the beautiful part. Nobody told the hidden neurons what to hunt for. Below are
-                <strong>the actual weights of eight of them</strong>, lifted from the network on this page and
-                arranged back into images — violet pixels excite the neuron, pink pixels veto it. Through
-                training alone, they invented their own little detectors for loops, strokes and corners.
-                Hover to zoom.</p>
-            <div class="card">
-                <div class="features-row" id="features"></div>
-                <p class="legend">one tile = one hidden neuron's 784 weights
-                    <i style="background:#8b7cff"></i>excites <i style="background:#ff6f9c"></i>inhibits</p>
-            </div>
-        </section>
-
-        <section class="chapter reveal">
-            <span class="chapnum">chapter 03</span>
-            <h2>learning is falling, carefully</h2>
-            <p>Training is golf in 50,890 dimensions. The <strong>loss</strong> measures how wrong the network
-                is; every weight asks <em>"if I nudge myself a little, does the wrongness shrink?"</em> — and
-                then all 50,890 of them step downhill together. Calculus finds the slope.
-                Repetition does everything else.</p>
-            <p>Below, one lonely weight rolls down its own loss bowl, leaving a trail. The
-                <strong>learning rate</strong> is the stride length — push it past
-                <span class="mono">0.9</span> and watch the poor thing overshoot the valley
-                and ricochet between the walls.</p>
-            <div class="card">
-                <canvas id="bowl" width="980" height="300"></canvas>
-                <div class="bowl-controls">
-                    <button id="step-btn">take a step</button>
-                    <button id="auto-btn">auto-descend</button>
-                    <button id="drop-btn">drop again</button>
-                    <label class="mono" for="lr" style="margin-left:8px; color: var(--mut);">lr <span id="lr-v" style="color: var(--ink);">0.20</span></label>
-                    <input type="range" id="lr" min="0.05" max="1.05" step="0.05" value="0.2" style="width:130px">
-                    <span id="bowl-stats"></span>
-                </div>
-                <p id="lr-warn"></p>
-            </div>
-        </section>
-
-        <section class="chapter wide reveal">
-            <span class="chapnum">chapter 04 — the lab</span>
-            <h2>draw. watch it think. correct it.</h2>
-            <p style="max-width:740px">Draw a digit on the dark pad. The moment you lift your pen, your sketch is shrunk
-                to the 28×28 retina, and you'll see the signal physically flow through the network —
-                every glowing wire is a real weighted connection firing right now. <strong>When it guesses wrong,
-                tell it the truth.</strong> It runs genuine backpropagation in your browser and gets
-                permanently better at <em>your</em> handwriting (it remembers between visits).</p>
-            <div class="card">
-                <div class="lab-grid">
-                    <div class="pad-side">
-                        <canvas id="pad" width="320" height="320" aria-label="drawing pad: draw a digit from 0 to 9"></canvas>
-                        <div class="pad-tools">
-                            <button id="clear-btn">clear</button>
-                            <span id="confidence"></span>
-                        </div>
-                        <div class="verdict-box">
-                            <div id="verdict" class="idle">draw a digit…</div>
-                        </div>
-                    </div>
-                    <div style="min-width:0; width:100%">
-                        <p class="viz-label">the forward pass, live</p>
-                        <canvas id="netviz"></canvas>
-                        <div id="teach-row">
-                            <p class="viz-label" style="margin-top:18px">what did you actually write? click to teach it</p>
-                            <div class="digit-btns">
-                                <button data-digit="0">0</button><button data-digit="1">1</button><button data-digit="2">2</button><button data-digit="3">3</button><button data-digit="4">4</button><button data-digit="5">5</button><button data-digit="6">6</button><button data-digit="7">7</button><button data-digit="8">8</button><button data-digit="9">9</button>
-                            </div>
-                            <p id="teach-note"></p>
-                            <div id="spark-wrap">
-                                <p class="viz-label">your lessons — loss per correction (falling = learning)</p>
-                                <canvas id="loss-spark" width="480" height="96"></canvas>
-                            </div>
-                        </div>
-                        <div class="teach-meta">
-                            <span>taught: <span id="taught-count">0</span></span>
-                            <button id="reset-btn">restore factory brain</button>
-                            <span id="restored-note"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="chapter reveal">
-            <span class="chapnum">chapter 05</span>
-            <h2>the whole secret, in twenty lines</h2>
-            <p>Everything above scales. The network in this page was trained with exactly this loop —
-                guess, measure the wrongness, feel for downhill, step. Repeated 840,000 times.
-                The largest models on Earth are this loop with more zeros attached.</p>
-            <div class="card" style="padding: 6px;">
-<pre><code><span class="k">import</span> torch, torch.nn <span class="k">as</span> nn
-<span class="k">from</span> torchvision <span class="k">import</span> datasets, transforms
-
-train  = datasets.MNIST(<span class="s">'data'</span>, train=<span class="k">True</span>, download=<span class="k">True</span>,
-                        transform=transforms.ToTensor())
-loader = torch.utils.data.DataLoader(train, batch_size=<span class="n">32</span>, shuffle=<span class="k">True</span>)
-
-model = nn.Sequential(
-    nn.Flatten(),
-    nn.Linear(<span class="n">28</span> * <span class="n">28</span>, <span class="n">64</span>),   <span class="c"># 784 pixels -> 64 pattern hunters</span>
-    nn.ReLU(),
-    nn.Linear(<span class="n">64</span>, <span class="n">10</span>),        <span class="c"># 64 hunters -> 10 verdicts</span>
-)
-
-opt     = torch.optim.SGD(model.parameters(), lr=<span class="n">0.05</span>)
-loss_fn = nn.CrossEntropyLoss()
-
-<span class="k">for</span> epoch <span class="k">in</span> range(<span class="n">14</span>):
-    <span class="k">for</span> x, y <span class="k">in</span> loader:
-        opt.zero_grad()
-        loss = loss_fn(model(x), y)   <span class="c"># how wrong are we?</span>
-        loss.backward()               <span class="c"># which way is downhill?</span>
-        opt.step()                    <span class="c"># take the step</span></code></pre>
-            </div>
-        </section>
-
-        <section class="epilogue reveal">
-            <p class="big">A pile of weighted opinions, a way to measure wrongness,
-                and the patience to fall downhill 840,000 times.<br>You just taught one by hand.</p>
-        </section>
-
-        <footer>
-            <a href="../index.html">&larr; back home</a> &nbsp;·&nbsp; © Journey to the stars🚀🌟
-        </footer>
-    </main>
-
-    <script src="weights.js"></script>
-    <script src="lab.js"></script>
+<body data-page="nn">
+    <script type="module">import init from '/app/site_wasm.js'; init();</script>
 </body>
 </html>

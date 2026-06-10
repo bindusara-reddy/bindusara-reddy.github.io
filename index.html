@@ -14,41 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=DM+Serif+Display&family=Sedan&display=swap" rel="stylesheet">
     <link rel="icon" href="sun.ico" type="image/x-icon">
 </head>
-<body>
-    <header>
-        <h1>Bindusara Reddy</h1>
-        <a class="scroll-hint" href="#note" aria-label="Scroll down to content">&#8595;</a>
-    </header>
-
-    <nav>
-        <a href="#note">Note</a>
-        <a href="#clip">Clip</a>
-        <a href="#memory">Memory</a>
-        <a href="#thought">Thought</a>
-    </nav>
-
-    <div class="container">
-        <section id="note" class="content" aria-label="Note">
-            <!-- Blog posts will be dynamically added here -->
-        </section>
-
-        <section id="clip" class="content" aria-label="Clip">
-            <!-- Photos will be dynamically added here -->
-        </section>
-
-        <section id="memory" class="content" aria-label="Memory">
-            <!-- Videos will be dynamically added here -->
-        </section>
-
-        <section id="thought" class="content" aria-label="Thought">
-            <!-- Research papers will be dynamically added here -->
-        </section>
-    </div>
-
-    <footer>
-        <p>&copy; Journey to the stars🚀🌟<a href="poem.html" style="text-decoration: none;">❤️</a></p>
-    </footer>
-
-    <script src="script.js"></script>
+<body data-page="index">
+    <script type="module">import init from '/app/site_wasm.js'; init();</script>
 </body>
 </html>

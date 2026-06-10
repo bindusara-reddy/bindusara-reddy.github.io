@@ -44,9 +44,7 @@
             transition: border-color 0.3s ease, color 0.3s ease;
         }
 
-        a:hover {
-            border-color: #fff;
-        }
+        a:hover { border-color: #fff; }
 
         .drift {
             font-size: 2rem;
@@ -64,10 +62,7 @@
         }
     </style>
 </head>
-<body>
-    <div class="drift">🚀</div>
-    <h1>404</h1>
-    <p>you drifted off the map</p>
-    <a href="/">back to earth</a>
+<body data-page="404">
+    <script type="module">import init from '/app/site_wasm.js'; init();</script>
 </body>
 </html>

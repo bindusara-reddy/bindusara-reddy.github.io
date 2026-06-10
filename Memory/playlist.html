@@ -33,9 +33,7 @@
             transition: background 0.3s ease;
         }
 
-        .home:hover {
-            background: rgba(255, 255, 255, 0.95);
-        }
+        .home:hover { background: rgba(255, 255, 255, 0.95); }
 
         h1 {
             font-size: 2.5rem;
@@ -84,35 +82,11 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .playlist li {
-                transition: none;
-            }
+            .playlist li { transition: none; }
         }
     </style>
 </head>
-<body>
-    <a class="home" href="../index.html">&larr; home</a>
-
-    <h1>Music</h1>
-
-    <div class="playlist">
-        <h2>YouTube Videos</h2>
-        <ul>
-            <li><a href="https://www.youtube.com/watch?v=hQ5x8pHoIPA" target="_blank" rel="noopener">Feather</a></li>
-            <li><a href="https://www.youtube.com/watch?v=L53gjP-TtGE" target="_blank" rel="noopener">Power</a></li>
-            <li><a href="https://www.youtube.com/watch?v=J3DWAJGaf7o" target="_blank" rel="noopener">Lost</a></li>
-            <!-- Add more YouTube video links here -->
-        </ul>
-    </div>
-
-    <div class="playlist">
-        <h2>Spotify Songs</h2>
-        <ul>
-            <li><a href="https://open.spotify.com/track/3GVkPk8mqxz0itaAriG1L7" target="_blank" rel="noopener">Everybody dies in their nightmares</a></li>
-            <li><a href="https://open.spotify.com/track/315aBOUD3xtj7sUMXtRgMV" target="_blank" rel="noopener">In the Stars</a></li>
-            <li><a href="https://open.spotify.com/track/4nVBt6MZDDP6tRVdQTgxJg" target="_blank" rel="noopener">Story of my life</a></li>
-            <!-- Add more Spotify song links here -->
-        </ul>
-    </div>
+<body data-page="playlist">
+    <script type="module">import init from '/app/site_wasm.js'; init();</script>
 </body>
 </html>

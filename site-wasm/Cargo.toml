@@ -1,0 +1,27 @@
+[package]
+name = "site-wasm"
+version = "1.0.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+opt-level = "s"
+lto = true
+
+[dependencies]
+wasm-bindgen = "0.2"
+js-sys = "0.3"
+console_error_panic_hook = "0.1"
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+    "Window", "Document", "Element", "HtmlElement", "HtmlCanvasElement",
+    "CanvasRenderingContext2d", "ImageData", "Storage", "Performance",
+    "DomRect", "PointerEvent", "MouseEvent", "KeyboardEvent", "Event",
+    "EventTarget", "HtmlInputElement", "Node", "NodeList", "CssStyleDeclaration",
+    "DomTokenList", "MediaQueryList", "IntersectionObserver",
+    "IntersectionObserverEntry", "Location", "VisibilityState",
+]

@@ -32,9 +32,7 @@
             transition: background 0.3s ease;
         }
 
-        .home:hover {
-            background: rgba(0, 0, 0, 0.85);
-        }
+        .home:hover { background: rgba(0, 0, 0, 0.85); }
 
         h1 {
             font-size: clamp(2rem, 6vw, 3rem);
@@ -81,9 +79,7 @@
             cursor: zoom-out;
         }
 
-        .lightbox.open {
-            display: flex;
-        }
+        .lightbox.open { display: flex; }
 
         .lightbox img {
             max-width: 94vw;
@@ -92,44 +88,11 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .gallery img {
-                transition: none;
-            }
+            .gallery img { transition: none; }
         }
     </style>
 </head>
-<body>
-    <a class="home" href="../index.html">&larr; home</a>
-
-    <h1>Gallery</h1>
-
-    <div class="gallery">
-        <img src="catto/1.jpg" alt="catto 1" loading="lazy">
-        <img src="catto/2.jpg" alt="catto 2" loading="lazy">
-        <img src="catto/3.jpg" alt="catto 3" loading="lazy">
-        <!-- Add more images here -->
-    </div>
-
-    <div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged photo">
-        <img src="" alt="">
-    </div>
-
-    <script>
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = lightbox.querySelector('img');
-
-        document.querySelectorAll('.gallery img').forEach(img => {
-            img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt;
-                lightbox.classList.add('open');
-            });
-        });
-
-        lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') lightbox.classList.remove('open');
-        });
-    </script>
+<body data-page="gallery">
+    <script type="module">import init from '/app/site_wasm.js'; init();</script>
 </body>
 </html>
